@@ -4,6 +4,8 @@ import 'package:duodo/core/di/dependency_injection.dart';
 import 'package:duodo/core/extensions/context_ext.dart';
 import 'package:duodo/core/helpers/local_storage_helper.dart';
 import 'package:duodo/core/presentation/controllers/bloc/app_theme_bloc.dart';
+import 'package:duodo/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
@@ -21,7 +23,7 @@ Future<void> main() async {
 }
 
 Future<void> initCore() async {
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   try {
     await FlutterDisplayMode.setHighRefreshRate();
   } catch (e) {
