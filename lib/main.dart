@@ -1,6 +1,7 @@
 import 'package:duodo/config/cache_keys.dart';
 import 'package:duodo/config/router.dart';
 import 'package:duodo/core/di/dependency_injection.dart';
+import 'package:duodo/core/extensions/context_ext.dart';
 import 'package:duodo/core/helpers/local_storage_helper.dart';
 import 'package:duodo/core/presentation/controllers/bloc/app_theme_bloc.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,12 @@ Future<void> main() async {
 
 Future<void> initCore() async {
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FlutterDisplayMode.setHighRefreshRate();
+  try {
+    await FlutterDisplayMode.setHighRefreshRate();
+  } catch (e) {
+    // ignore: avoid_print
+    print('Error setting high refresh rate: $e');
+  }
 
   await onStartupInjection();
 
@@ -65,11 +71,19 @@ class MyApp extends StatelessWidget {
             title: 'Duodo',
             themeMode: state.themeMode,
             theme: ThemeData(
+              progressIndicatorTheme:
+                  context.theme.progressIndicatorTheme.copyWith(
+                year2023: false,
+              ),
               colorScheme: ColorScheme.fromSeed(seedColor: state.color),
               useMaterial3: state.useMaterial3,
               fontFamily: 'Rosario',
             ),
             darkTheme: ThemeData(
+              progressIndicatorTheme:
+                  context.theme.progressIndicatorTheme.copyWith(
+                year2023: false,
+              ),
               colorScheme: ColorScheme.fromSeed(
                 brightness: Brightness.dark,
                 seedColor: state.color,
