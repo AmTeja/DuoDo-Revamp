@@ -1,0 +1,2 @@
+C:/Users/krish/Development/flutter_projects/new/duodo/android/app/.cxx/Debug/dk137247/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/krish/Development/flutter_projects/new/duodo/android/app/.cxx/Debug/dk137247/arm64-v8a/CMakeFiles/rebuild_cache.dir
